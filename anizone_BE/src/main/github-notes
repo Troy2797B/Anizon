@@ -1,0 +1,48 @@
+The routine for adding things to Git
+
+1. Make the feature branch:
+    git checkout -b feature/specific-feature-name
+        *NOTE: you can use a different prefix on the branch based on what you are doing.
+        feature/ for new features.
+        bugfix/ for bug fixes.
+        hotfix/ for critical bug fixes that need to go directly into production.
+        release/ for preparing release candidates.
+        chore/ for routine tasks or minor fixes.
+        refactor/ for code refactoring that isn't directly tied to bug fixes or new features.
+
+2. Add your changes locally
+
+3. Commit the changes locally:
+    git add .
+    git commit -m "Added functionality to add notes to the application."
+
+4. Push the changes to the remote repository
+    git push -u origin feature/specific-feature-name
+    *NOTE: The -u flag sets the upstream (remote tracking) reference, so in subsequent pushes, you can simply use git push without needing to specify the origin and branch.
+    ALSO: Remember to do regular pushes to the remote repository as well as doing Pull Requests, even when working solo to maintain a clean history.
+
+5. Once you are satisfied with the development in your feature branch, switch to the development branch.
+    git fetch //fetches the latest from the remote, just to ensure we are not behind
+    git checkout dev
+
+6. Pull the latest changes to ensure your local branch is up to date with the remote.
+    git pull
+
+7. Merge your feature branch into the development branch.
+    git merge feature/specific-feature-name
+
+8. Push these changes to the remote repository.
+    git push origin dev
+
+9. Delete the local feature branch
+    git branch -d feature/specific-feature-name
+
+10.Delete Remote Branch
+    git push origin --delete feature/specific-feature-name
+
+11.Using Tags for Releases
+    When you merge significant changes, or periodically in your development process, consider tagging your commits in the dev or master branch. This can help in marking
+    release points or significant updates, which is particularly useful for versioning and rollbacks:
+
+    git tag -a v1.2 -m "Release version 1.2"
+    git push origin v1.2

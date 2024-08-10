@@ -19,6 +19,7 @@ target/
 *.iml
 *.ipr
 *-dev.properties
+github-notes.*
 
 ### NetBeans ###
 /nbproject/private/
