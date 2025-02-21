@@ -8,21 +8,17 @@ import reactor.core.publisher.Mono;
 
 
 @Service
-public class ApiService {
-    //The web client gets injected into this class in order for us to use that custom configuration with any API call we make here.
-    //You can inject both of the clients here and use the @Qualifier annotation along with @Autowired so Spring knows what to do.
+public class AnimeApiService {
+    //The web client configuration gets injected into this class in order for us to use that custom configuration with any API call we make here.
+    //You can inject both of the clients here and use the @Qualifier annotation along with @Autowired so Spring knows what to do, but for more clean code, we will keep it simple and just inject the animeApiClient.
     private final WebClient animeApiClient;
-    private final WebClient streamingApiClient;
     @Autowired
-    public ApiService(@Qualifier("animeApiWebClient") WebClient animeApiClient,
-                      @Qualifier("streamingApiWebClient") WebClient streamingApiClient){
+    public AnimeApiService(@Qualifier("animeApiWebClient") WebClient animeApiClient){
         this.animeApiClient = animeApiClient;
-        this.streamingApiClient = streamingApiClient;
     }
 
-    //creating an HTTP Request to externalAnimeApi to get some data
-
-    public Mono<String> getSomeDataFromAnimeAPI(){
+    //This is a method that gets a list of anime Genres from the external API.
+    public Mono<String> getAnimeGenres(){
         return animeApiClient.get()
                 .uri("/v2/anime/genres")
                 .retrieve()

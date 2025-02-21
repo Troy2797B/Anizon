@@ -1,24 +1,22 @@
 package passion.troy.anizone.controllers;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
 import reactor.core.publisher.Mono;
-import passion.troy.anizone.services.ApiService;
+import passion.troy.anizone.services.AnimeApiService;
 
 
 //Okay so now we inject the service into this Controller and this is where we use annotations to decide the path variable and what not.
-@Controller
+@RestController
 public class AnimeApiController {
-    @Autowired
-    private final ApiService apiService;
+    private final AnimeApiService animeApiService;
 
-    public AnimeApiController(ApiService apiService){
-        this.apiService = apiService;
+    public AnimeApiController(AnimeApiService animeApiService){
+        this.animeApiService = animeApiService;
     }
 
     @GetMapping("/anime/genres")
     public Mono<String> getAnimeGenres(){
-        return apiService.getSomeDataFromAnimeAPI();
+        return animeApiService.getAnimeGenres();
     }
 }

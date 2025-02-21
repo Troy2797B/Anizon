@@ -17,11 +17,12 @@ public class WebClientConfig {
     //this web client is a bean that will be injected into any class we make for making API calls.
     @Bean
     public WebClient animeApiWebClient(WebClient.Builder builder){
+        System.out.println("Using API Key: " + apikey);
         return builder
                 .baseUrl("https://myanimelist.p.rapidapi.com")
                 .defaultHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
                 .defaultHeader(HttpHeaders.ACCEPT, MediaType.APPLICATION_JSON_VALUE)
-                .defaultHeader("rapidApiKey", apikey)
+                .defaultHeader("X-RapidAPI-Key", apikey)
                 .build();
     }
     //We are creating a bean for every API we are using and spring will automatically inject it.
@@ -31,7 +32,7 @@ public class WebClientConfig {
                 .baseUrl("https://streaming-availability.p.rapidapi.com")
                 .defaultHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
                 .defaultHeader(HttpHeaders.ACCEPT, MediaType.APPLICATION_JSON_VALUE)
-                .defaultHeader("rapidApiKey", apikey)
+                .defaultHeader("X-RapidAPI-Key", apikey)
                 .build();
     }
 }
