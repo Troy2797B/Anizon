@@ -14,9 +14,15 @@ public class AnimeApiController {
     public AnimeApiController(AnimeApiService animeApiService){
         this.animeApiService = animeApiService;
     }
-
+    // This is a simple get request that returns a list of anime genres.
     @GetMapping("/anime/genres")
     public Mono<String> getAnimeGenres(){
         return animeApiService.getAnimeGenres();
+    }
+    // This is a get request that returns a list of anime with a title that contains the query parameter.
+    // TODO: Find out how to get the title from the user input.
+    @GetMapping("/anime/search")
+    public Mono<String> getAnimeByTitleContaining(String title){
+        return animeApiService.getAnimeByTitleContaining(title);
     }
 }

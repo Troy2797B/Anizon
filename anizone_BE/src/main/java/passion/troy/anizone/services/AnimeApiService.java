@@ -24,7 +24,17 @@ public class AnimeApiService {
                 .retrieve()
                 .bodyToMono(String.class);
     }
-
+    // This returns a list of anime with a maximum of 50. The query param allows for the attributes of the api call to be filled in dynamically.
+    public Mono<String> getAnimeByTitleContaining(String title){
+        return animeApiClient.get()
+                .uri(uriBuilder -> uriBuilder
+                        .path("/v2/anime/search")
+                        .queryParam("q", title)
+                        .queryParam("n", 50)
+                        .build())
+                .retrieve()
+                .bodyToMono(String.class);
+    }
 //    public String getMangaGenresFromAnimeApi(String url) {
 //        HttpResponse<String> response;
 //        try {
