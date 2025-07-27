@@ -46,3 +46,25 @@ The routine for adding things to Git
 
     git tag -a v1.2 -m "Release version 1.2"
     git push origin v1.2
+
+Mockito general syntax:
+
+// 1. Mock the dependency
+@Mock MyService myService;
+
+// 2. Setup behavior
+when(myService.someMethod("input")).thenReturn("output");
+
+// 3. Call the thing you’re testing
+String result = classUnderTest.callMyService();
+
+// 4. Verify it did what you expected
+assertEquals("output", result);
+verify(myService).someMethod("input");
+
+For WebClient:
+
+when(webClient.get()).thenReturn(mockHeadersUriSpec);
+when(mockHeadersUriSpec.uri(any())).thenReturn(mockHeadersSpec);
+when(mockHeadersSpec.retrieve()).thenReturn(mockResponseSpec);
+when(mockResponseSpec.bodyToMono(String.class)).thenReturn(Mono.just("yay"));

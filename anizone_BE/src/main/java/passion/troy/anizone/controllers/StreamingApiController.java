@@ -9,8 +9,7 @@ import reactor.core.publisher.Mono;
 
 @RestController
 public class StreamingApiController {
-    @Autowired
-    public final StreamingApiService streamingApiService;
+    private final StreamingApiService streamingApiService;
 
     public StreamingApiController (StreamingApiService streamingApiService){
         this.streamingApiService = streamingApiService;

@@ -7,12 +7,12 @@ import reactor.core.publisher.Mono;
 
 @Service
 public class StreamingApiService {
-    @Autowired
     private final WebClient streamingApiWebClient;
 
     public StreamingApiService (WebClient streamingApiWebClient) {
         this.streamingApiWebClient = streamingApiWebClient;
     }
+
     public Mono<String> getStreamingPlatform(String platformName){
         return streamingApiWebClient.get()
                 .uri(uriBuilder -> uriBuilder
