@@ -25,8 +25,8 @@ public class StreamingPlatform {
     @Column(nullable = false, unique = true)
     private String platformName;
 
-    @ManyToMany(mappedBy = "subscribedStreamingPlatforms")
-    private Set<Account> accountsByPlatform = new LinkedHashSet<>();
+//    @ManyToMany(mappedBy = "subscribedStreamingPlatforms")
+//    private Set<Account> accountsByPlatform = new LinkedHashSet<>();
 
     public StreamingPlatform(Long platformId, String platformName) {
         this.platformName = platformName;

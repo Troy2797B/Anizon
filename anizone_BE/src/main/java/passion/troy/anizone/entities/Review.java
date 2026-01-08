@@ -17,9 +17,9 @@ public class Review {
     @EqualsAndHashCode.Include
     private Long reviewId;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)//Many reviews can be written by one user
-    @JoinColumn(name = "userId", nullable = false)
-    private Account account; //Foreign key to reference// User
+//    @ManyToOne(fetch = FetchType.LAZY, optional = false)//Many reviews can be written by one user
+//    @JoinColumn(name = "accountId", nullable = false)
+//    private Account account; //Foreign key to reference// User
 
     @ManyToOne //Many reviews can be written for one anime
     @JoinColumn(name = "animeId", nullable = false)
