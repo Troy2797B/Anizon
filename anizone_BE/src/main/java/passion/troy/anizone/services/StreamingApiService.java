@@ -1,6 +1,5 @@
 package passion.troy.anizone.services;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
@@ -13,7 +12,7 @@ public class StreamingApiService {
         this.streamingApiWebClient = streamingApiWebClient;
     }
 
-    public Mono<String> getStreamingPlatform(String platformName){
+    public Mono<String> getShowsByStreamingPlatform(String platformName){
         return streamingApiWebClient.get()
                 .uri(uriBuilder -> uriBuilder
                         .path("/shows/search/filters")
@@ -24,4 +23,16 @@ public class StreamingApiService {
                 .retrieve()
                 .bodyToMono(String.class);
     }
+
+    // TODO: make a method to getAllAnimeByPlatformFromStreamingApi(String platformName)
+    /* use the GET search shows by filters
+        output_language=en
+        country=us
+        output_language=en
+        shows_type=series
+        show_original_language=ja
+        series_granularity=show
+     */
+
+
 }

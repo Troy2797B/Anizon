@@ -20,7 +20,7 @@ public class AnimeApiController {
         return animeApiService.getAnimeGenres();
     }
     // This is a get request that returns a list of anime with a title that contains the query parameter.
-    // TODO: Find out how to get the title from the user input.
+    // TODO: Find out how to get the title from the account input.
     @GetMapping("/anime/search")
     public Mono<String> getAnimeByTitleContaining(String title){
         return animeApiService.getAnimeByTitleContaining(title);

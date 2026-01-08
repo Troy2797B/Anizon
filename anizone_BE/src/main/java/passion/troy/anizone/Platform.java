@@ -1,6 +1,6 @@
 package passion.troy.anizone;
 
-public enum Platforms {
+public enum Platform {
     HULU("Hulu"),
     NETFLIX("Netflix"),
     DISNEY_PLUS("Disney Plus"),
@@ -12,7 +12,7 @@ public enum Platforms {
 
     private final String name;
 
-    Platforms (String name) {
+    Platform(String name) {
         this.name = name;
     }
 

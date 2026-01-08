@@ -1,0 +1,10 @@
+Next time on Dragon Ball Z...
+
+We will test all of the entities we just created. We will create a test class for each entity and use JUnit to write unit tests.
+
+Checklist:
+- [ ] Tested User
+- [ ] Tested Anime
+- [ ] Tested Review
+- [ ] Tested StreamingPlatform
+- [ ] Push to GitHub

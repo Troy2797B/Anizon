@@ -17,6 +17,6 @@ public class StreamingApiController {
     //just testing to see if it returns all us platform shows
     @GetMapping("/streaming/platforms")
     public Mono<String> getStreamingPlatform(String platformName){
-        return streamingApiService.getStreamingPlatform(platformName);
+        return streamingApiService.getShowsByStreamingPlatform(platformName);
     }
 }

@@ -47,6 +47,10 @@ The routine for adding things to Git
     git tag -a v1.2 -m "Release version 1.2"
     git push origin v1.2
 
+
+-----------------------------------
+
+
 Mockito general syntax:
 
 // 1. Mock the dependency
