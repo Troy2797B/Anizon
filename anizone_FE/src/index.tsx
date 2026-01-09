@@ -6,7 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import 'primereact/resources/themes/saga-blue/theme.css'; //theme
 import 'primereact/resources/primereact.min.css'; //core css
 // import 'primeicons/primeicons.css'; //icons
-import Logo from './components/Logo';
+import Logo from './assets/Logo';
 import UserInput from './testInput';
 
 const root = ReactDOM.createRoot(

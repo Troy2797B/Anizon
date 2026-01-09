@@ -9,6 +9,8 @@ import FormatBoldIcon from '@mui/icons-material/FormatBold';
 import FormatItalicIcon from '@mui/icons-material/FormatItalic';
 import FormatUnderlinedIcon from '@mui/icons-material/FormatUnderlined';
 import Checkbox from "@mui/joy/Checkbox";
+import Logo from '../assets/Logo';
+import { useNavigate } from "react-router-dom";
 
 /*This is a page that will ask the user to input the values for Account in the back end.
 
@@ -22,6 +24,7 @@ function CreateAccountPage(){
     const [prefersSub, setPrefersSub] = useState(true);
     const [email, setEmail] = useState("");
     const [value, setValue] = React.useState<string | null>('default');
+    const navigate = useNavigate();
     //speaks to the backend in order to add the account to the database
     const handleCreateOnlineAccount = async () => {
         console.log('clicked!')
@@ -37,7 +40,8 @@ function CreateAccountPage(){
         try {
             const response = await axios.post("http://localhost:8080/accounts", accountObject);
             console.log("Account created.", response.data);
-        // TODO: add routing redirect to Homepage
+        // TODO: add routing redirect to homepage
+        navigate("/");
         } 
     //if this doesn't work, then throw the error
         catch (error){
