@@ -14,8 +14,6 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <Logo />
-    <UserInput />
     <App />
 
   </React.StrictMode>
