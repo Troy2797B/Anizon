@@ -1,15 +1,8 @@
-import React from "react";
 import axios from "axios";
-import { useState, useEffect } from "react";
+import { useState} from "react";
 import Button from '@mui/joy/Button';
-import ToggleButtonGroup from '@mui/joy/ToggleButtonGroup';
 import Input from '@mui/joy/Input';
-import IconButton from '@mui/joy/IconButton';
-import FormatBoldIcon from '@mui/icons-material/FormatBold';
-import FormatItalicIcon from '@mui/icons-material/FormatItalic';
-import FormatUnderlinedIcon from '@mui/icons-material/FormatUnderlined';
 import Checkbox from "@mui/joy/Checkbox";
-import Logo from '../assets/Logo';
 import { useNavigate } from "react-router-dom";
 
 /*This is a page that will ask the user to input the values for Account in the back end.
@@ -23,11 +16,9 @@ function CreateAccountPage(){
     const [prefersDub, setPrefersDub] = useState(true);
     const [prefersSub, setPrefersSub] = useState(true);
     const [email, setEmail] = useState("");
-    const [value, setValue] = React.useState<string | null>('default');
     const navigate = useNavigate();
     //speaks to the backend in order to add the account to the database
     const handleCreateOnlineAccount = async () => {
-        console.log('clicked!')
     //tells the backend what the DTO values are for the fields
         const accountObject = {
             email: email,
@@ -35,11 +26,13 @@ function CreateAccountPage(){
             prefersDub: prefersDub,
             prefersSub: prefersSub
         };
-        console.log("accountObject:", accountObject);
     //axios POST request to /accounts endpoint
         try {
             const response = await axios.post("http://localhost:8080/accounts", accountObject);
             console.log("Account created.", response.data);
+        // saving the account ID to local storage for future use
+        const createdAccountId = (response.data && (response.data.id ?? response.data.accountId)) ?? response.data;
+        localStorage.setItem("accountId", String(createdAccountId));
         // TODO: add routing redirect to homepage
         navigate("/");
         } 
@@ -69,15 +62,12 @@ function CreateAccountPage(){
                 onChange={(e) => setAccountName(e.target.value)}
             />
             <Checkbox 
-            label="I like dubbed anime!" 
-            defaultChecked
-            checked={prefersDub}
-            onChange={(e) => setPrefersDub(e.target.checked)}
+                label="I like dubbed anime!" 
+                checked={prefersDub}
+                onChange={(e) => setPrefersDub(e.target.checked)}
             /> 
-            <div></div>
             <Checkbox
                 label="I like subtitled anime!"
-                defaultChecked
                 checked={prefersSub}
                 onChange={(e) => setPrefersSub(e.target.checked)}
             />
@@ -95,10 +85,11 @@ function CreateAccountPage(){
             <br></br>
             
             <Button 
-            type="submit" 
-            size="lg" 
-            variant="soft"
-            onClick={handleCreateOnlineAccount}>Create Online Account</Button>
+                type="submit" 
+                size="lg" 
+                variant="soft"
+                onClick={handleCreateOnlineAccount}>Create Online Account
+            </Button>
             
         </div>
     );

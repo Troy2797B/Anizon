@@ -23,4 +23,5 @@ public class AccountController {
         return accountService.getAccountById(accountId)
                 .orElseThrow(() -> new RuntimeException("Account not found"));
     }
+
 }

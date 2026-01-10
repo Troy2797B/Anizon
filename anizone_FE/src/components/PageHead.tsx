@@ -16,9 +16,7 @@ function PageHead() {
                 placeholder="Search..." 
                 style={{ flexGrow: 1, margin: "0 10px" }} 
             />
-
-            <Button>Create Account</Button>
-            <Button>Login</Button>
+            <Button variant="outlined">Search</Button>
             <div style={{ paddingTop: "16px" }}>
                 <Outlet />
             </div>
